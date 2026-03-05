@@ -1,0 +1,38 @@
+{
+  "name": "github",
+  "version": "1.0.0",
+  "description": "MCP client for interacting with the GitHub API from the Gestor de Tareas ICE workspace.",
+  "homepage": "https://github.com",
+  "environment": {
+    "GITHUB_TOKEN": {
+      "description": "Personal access token with repo read/write permissions as needed.",
+      "required": true
+    }
+  },
+  "api": {
+    "baseUrl": "https://api.github.com",
+    "headers": {
+      "Authorization": "Bearer ${GITHUB_TOKEN}",
+      "Accept": "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2022-11-28"
+    }
+  },
+  "capabilities": {
+    "listRepositories": {
+      "method": "GET",
+      "path": "/user/repos",
+      "description": "List repositories accessible with the configured token."
+    },
+    "getRepository": {
+      "method": "GET",
+      "path": "/repos/{owner}/{repo}",
+      "description": "Get metadata for a specific repository."
+    },
+    "createIssue": {
+      "method": "POST",
+      "path": "/repos/{owner}/{repo}/issues",
+      "description": "Create a new issue in a repository."
+    }
+  }
+}
+
